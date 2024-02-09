@@ -1,19 +1,99 @@
-// const fs = require('fs/promises')
+import path from "path";
+import fs from "fs/promises";
+import { nanoid } from "nanoid";
 
-const listContacts = async () => {}
+const contactsPath = path.join(process.cwd(), "/models/contacts.json");
 
-const getContactById = async (contactId) => {}
+export const listContacts = async () => {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    const contactsParsed = JSON.parse(contacts);
+    return contactsParsed;
+  } catch (error) {
+    return JSON.parse(error.message);
+  }
+};
 
-const removeContact = async (contactId) => {}
+export const getById = async (contactId) => {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    const contactsParsed = JSON.parse(contacts);
+    const contact = contactsParsed.find((item) => item.id === contactId);
+    return contact;
+  } catch (error) {
+    return JSON.parse(error.message);
+  }
+};
 
-const addContact = async (body) => {}
+export const removeContact = async (contactId) => {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    const contactsParsed = JSON.parse(contacts);
+    const index = contactsParsed.findIndex(
+      (contact) => contact.id === contactId
+    );
 
-const updateContact = async (contactId, body) => {}
+    if (index > -1) {
+      contactsParsed.splice(index, 1);
 
-module.exports = {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-  updateContact,
-}
+      const updatedContacts = JSON.stringify(contactsParsed, null, 2);
+      fs.writeFile(contactsPath, updatedContacts);
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return console.log(error.message);
+  }
+};
+
+export const addContact = async (body) => {
+  try {
+    const newContact = {
+      id: nanoid(24),
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+    };
+
+    const contacts = await fs.readFile(contactsPath);
+    const contactsParsed = JSON.parse(contacts);
+
+    if (
+      contactsParsed.find(
+        (contact) =>
+          contact.name?.toLowerCase() === newContact.name?.toLowerCase()
+      )
+    ) {
+      return null;
+    } else {
+      contactsParsed.push(newContact);
+    }
+    const updatedContacts = JSON.stringify(contactsParsed, null, 2);
+    await fs.writeFile(contactsPath, updatedContacts);
+    return newContact;
+  } catch (error) {
+    return console.log(error.message);
+  }
+};
+
+export const updateContacts = async (contactId, body) => {
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    const contactsParsed = JSON.parse(contacts);
+    const index = contactsParsed.findIndex(
+      (contact) => contact.id === contactId
+    );
+
+    if (index > -1) {
+      contactsParsed[index] = { ...contactsParsed[index], ...body };
+
+      await fs.writeFile(contactsPath, JSON.stringify(contactsParsed, null, 2));
+      return contactsParsed[index];
+    } else {
+      return false;
+    }
+  } catch (error) {
+    return console.log(error.message);
+  }
+};
