@@ -60,7 +60,7 @@ Open your browser or postman and check all available methods and endpoint's
 
 ## Project Status
 
-Project is: _finall_
+Project is: _in-progress_
 
 ## Acknowledgements
 
