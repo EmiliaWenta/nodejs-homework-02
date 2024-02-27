@@ -65,6 +65,15 @@ const updateUser = async (id, token) => {
   await User.findByIdAndUpdate({ _id: id }, updateData, { new: true });
 };
 
+const updateUserAvatarURL = async (id, fileName) => {
+  const updateData = {
+    $set: {
+      avatarURL: fileName,
+    },
+  };
+  await User.findByIdAndUpdate({ _id: id }, updateData, { new: true });
+};
+
 const findUserById = async (id) => {
   return User.findOne({ _id: id });
 };
@@ -81,4 +90,5 @@ export {
   createUser,
   updateUser,
   findUserById,
+  updateUserAvatarURL,
 };

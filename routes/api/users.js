@@ -19,7 +19,7 @@ router.get("/logout", authMiddleware, logOut);
 router.get("/current", authMiddleware, current);
 
 router.patch(
-  "/avatars",
+  "/avatar",
   authMiddleware,
   uploadMiddleware.single("avatar"),
   updateUserAvatar

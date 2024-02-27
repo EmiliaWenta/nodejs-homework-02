@@ -1,6 +1,6 @@
 import path from "path";
 import multer from "multer";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 const tmp = path.join(process.cwd(), "tmp");
 const storeImage = path.join(process.cwd(), "public/avatars");
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     cb(null, tmp);
   },
   filename: (req, file, cb) => {
-    cb(null, `${uuid()}${file.originalname}`);
+    cb(null, `${uuidv4()}${file.originalname}`);
   },
 });
 
