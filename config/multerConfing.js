@@ -1,5 +1,6 @@
 import path from "path";
 import multer from "multer";
+import { uuid } from "uuidv4";
 
 const tmp = path.join(process.cwd(), "tmp");
 const storeImage = path.join(process.cwd(), "public/avatars");
