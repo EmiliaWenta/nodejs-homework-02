@@ -8,9 +8,8 @@ const isAccessible = (path) => {
 };
 
 const setupFolder = async (path) => {
-  const folder = isAccessible(path);
-  if (!folder) {
-    fs.mkdir(path);
+  if (!(await isAccessible(path))) {
+    await fs.mkdir(path);
   }
 };
 
