@@ -18,6 +18,9 @@ const users = new SchemaUsers({
     enum: ["starter", "pro", "business"],
     default: "starter",
   },
+  avatarURL: {
+    type: String,
+  },
   token: {
     type: String,
     default: null,
