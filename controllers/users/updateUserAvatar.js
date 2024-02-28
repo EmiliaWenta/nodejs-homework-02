@@ -25,7 +25,7 @@ export async function updateUserAvatar(req, res, next) {
   }
 
   const isValidAndTransform = await isImageAndTransform(filePath);
-  console.log(isValidAndTransform);
+
   if (!isValidAndTransform) {
     await fs.unlink(filePath);
     return res
@@ -33,7 +33,8 @@ export async function updateUserAvatar(req, res, next) {
       .json({ message: "File isn't a photo but is pretending " });
   }
 
-  const id = res.user._id;
+  const id = req.user._id;
+
   await updateUserAvatarURL(id, fileName);
 
   res.status(200).json({

@@ -6,7 +6,7 @@ const AVATARS_WIDTH = 250;
 const AVATARS_HEIGHT = 250;
 
 export const isImageAndTransform = async (filePath) => {
-  new Promise((resolve) => {
+  return new Promise((resolve) => {
     Jimp.read(filePath, async (err, image) => {
       if (err) resolve(false);
       try {
