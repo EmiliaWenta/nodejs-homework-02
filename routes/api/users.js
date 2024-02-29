@@ -8,12 +8,15 @@ import { current } from "../../controllers/users/current.js";
 import { updateUserAvatar } from "../../controllers/users/updateUserAvatar.js";
 import { uploadMiddleware } from "../../config/multerConfing.js";
 import { verify } from "../../controllers/users/verify.js";
+import { resendVerifyEmail } from "../../controllers/users/resendVerifyEmail.js";
 
 const router = express.Router();
 
 router.post("/signup", signUp);
 
 router.post("/login", logIn);
+
+router.post("/verify", resendVerifyEmail);
 
 router.get("/logout", authMiddleware, logOut);
 
