@@ -78,6 +78,16 @@ const findUserById = async (id) => {
   return User.findOne({ _id: id });
 };
 
+const getUserByVerToken = async (verificationToken) => {
+  return User.findOne({ verificationToken });
+};
+
+const updateUserVerify = async (id, dataToUpdate) => {
+  return await User.findByIdAndUpdate({ _id: id }, dataToUpdate, {
+    new: true,
+  });
+};
+
 export {
   getAllContacts,
   getContactById,
@@ -91,4 +101,6 @@ export {
   updateUser,
   findUserById,
   updateUserAvatarURL,
+  getUserByVerToken,
+  updateUserVerify,
 };

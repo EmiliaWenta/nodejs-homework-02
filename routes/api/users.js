@@ -7,6 +7,7 @@ import { signUp } from "../../controllers/users/signUp.js";
 import { current } from "../../controllers/users/current.js";
 import { updateUserAvatar } from "../../controllers/users/updateUserAvatar.js";
 import { uploadMiddleware } from "../../config/multerConfing.js";
+import { verify } from "../../controllers/users/verify.js";
 
 const router = express.Router();
 
@@ -17,6 +18,8 @@ router.post("/login", logIn);
 router.get("/logout", authMiddleware, logOut);
 
 router.get("/current", authMiddleware, current);
+
+router.get("/verify/:verificationToken", verify);
 
 router.patch(
   "/avatar",
