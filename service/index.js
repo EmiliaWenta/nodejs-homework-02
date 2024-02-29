@@ -1,7 +1,9 @@
 import gravatar from "gravatar";
+import { v4 as uuidv4 } from "uuid";
 
 import { User } from "./schemas/users.js";
 import { Contact } from "./schemas/contacts.js";
+import { sendVerificationEmail } from "../helpers/sendVerificationEmail.js";
 
 const getAllContacts = async ({ owner }) => {
   return Contact.find({ owner });
@@ -49,10 +51,12 @@ const findUserByEmail = async (email) => {
 };
 
 const createUser = async ({ email, password }) => {
+  const verificationToken = uuidv4();
   const avatarURL = gravatar.url(email, { s: "200", r: "pg" });
-  const newUser = new User({ email, avatarURL });
+  const newUser = new User({ email, avatarURL, verificationToken });
+  await sendVerificationEmail(email, verificationToken);
   await newUser.setPassword(password);
-  await newUser.save();
+  await await newUser.save();
   return newUser;
 };
 
