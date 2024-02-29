@@ -1,6 +1,6 @@
 import { getUserByVerToken, updateUserVerify } from "../../service/index.js";
 
-async function verify(req, res, next) {
+export async function verify(req, res, next) {
   const { verificationToken } = req.params;
   const user = await getUserByVerToken(verificationToken);
 
@@ -24,5 +24,3 @@ async function verify(req, res, next) {
     res.status(500).json(`Error message: ${err}`);
   }
 }
-
-export { verify };

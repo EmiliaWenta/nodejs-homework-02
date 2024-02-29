@@ -1,8 +1,8 @@
+import dotenv from "dotenv";
 import passport from "passport";
 import passportJWT from "passport-jwt";
-import { findUserById } from "../service/index.js";
 
-import dotenv from "dotenv";
+import { findUserById } from "../service/index.js";
 
 dotenv.config();
 

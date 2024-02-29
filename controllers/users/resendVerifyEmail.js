@@ -1,5 +1,4 @@
 import { findUserByEmail } from "../../service/index.js";
-
 import { sendVerificationEmail } from "../../helpers/sendVerificationEmail.js";
 
 export async function resendVerifyEmail(req, res, next) {

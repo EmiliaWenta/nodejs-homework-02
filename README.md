@@ -4,7 +4,6 @@
 
 - [General Info](#general-information)
 - [Technologies Used](#technologies-used)
-- [Features](#features)
 - [Setup](#setup)
 - [Project Status](#project-status)
 - [Acknowledgements](#acknowledgements)
@@ -13,7 +12,13 @@
 
 ## General Information
 
-- The aim of the task was to create a simple application for creating, deleting, and storing contacts using express and REST API.
+This is an application using node.js and REST API that offers the following functionalities:
+
+- Adding, deleting, editing, and searching users using RESTAPI and MongoDB.
+- Assigning contacts to a specific user, allowing them to add, edit, and delete contacts.
+- Creating endpoints responsible for user registration, login, logout, considering full user authorization based on tokens.
+- Allowing users to upload avatars using Multer.
+- Adding a user verification process by sending them an email with an approval link using MailGun.
 
 ## Technologies Used
 
@@ -22,39 +27,15 @@ Project is created with:
 ![JavaScript](https://badges.aleen42.com/src/javascript.svg)
 ![NodeJS](https://badges.aleen42.com/src/node.svg)
 
-## Features
-
-1.  GET `http://localhost:3000/api/contacts`
-
-![](./images/getContacts.PNG)
-
-2. GET by ID `http://localhost:3000/api/contacts/CONTACT_ID`
-
-![](./images/getById.PNG)
-
-3. POST `http://localhost:3000/api/contacts/`
-
-![](./images/createContact.PNG)
-
-4. DELETE `http://localhost:3000/api/contacts/CONTACT_ID`
-
-![](./images/deleteContact.PNG)
-
-5. PUT `http://localhost:3000/api/contacts/CONTACT_ID`
-
-![](./images/updateContacts.PNG)
-
-6. PATCH `http://localhost:3000/api/contacts/CONTACT_ID/FAVOURITE`
-
-![](./images/updateStatus.PNG)
-
 ## Setup
 
 Clone this repo to your desktop and run `npm install` to install all the dependencies.
 
 Once the dependencies are installed, you can run `npm run start:dev`.
 
-Open your browser or postman and check all available methods and endpoint's
+Open your browser or postman and check all available methods and endpoint's for:
+
+CONTACTS:
 
 - GET (get all contacts) : `http://localhost:3000/api/contacts`
 - GET (find contact by id) : `http://localhost:3000/api/contacts/CONTACT_ID`
@@ -62,6 +43,16 @@ Open your browser or postman and check all available methods and endpoint's
 - DELETE (remove contact by id) : `http://localhost:3000/api/contacts/CONTACT_ID`
 - PUT (update contact with json) : `http://localhost:3000/api/contacts/CONTACT_ID`
 - PATCH (update one field with contact): `http://localhost:3000/api/contacts/CONTACT_ID/FAVOURITE`
+
+USERS:
+
+- POST (signup/register user) : `http://localhost:3000/api/users/signup`
+- POST (login user) : `http://localhost:3000/api/users/login`
+- POST (verify if the verify email was send) : `http://localhost:3000/api/users/verify`
+- GET (logout user) : `http://localhost:3000/api/users/logout`
+- GET (to get current user) : `http://localhost:3000/api/users/current`
+- POST (to send verification email to user) : `http://localhost:3000/api/users/verify/:verificationToken`
+- PATCH (to get avatar for user) : `http://localhost:3000/api/users/avatar`
 
 ## Project Status
 

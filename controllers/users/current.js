@@ -1,4 +1,4 @@
-async function current(req, res, next) {
+export async function current(req, res, next) {
   const { email, subscription } = req.user;
   try {
     res.status(200).json({
@@ -9,5 +9,3 @@ async function current(req, res, next) {
     next(error);
   }
 }
-
-export { current };

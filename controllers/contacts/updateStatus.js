@@ -1,5 +1,5 @@
-import { validateUpdateFavorite } from "../../validator.js";
 import { updateStatusContact } from "../../service/index.js";
+import { validateUpdateFavorite } from "../../helpers/validator.js";
 
 export async function updateStatus(req, res, next) {
   const owner = req.user.id;
@@ -11,7 +11,7 @@ export async function updateStatus(req, res, next) {
     if (error) {
       return res.json({ status: 400, msg: "Missing field favorite" });
     }
-    const result = await updateStatusContact({contactId, favourite, owner});
+    const result = await updateStatusContact({ contactId, favourite, owner });
 
     if (result) {
       return res.json({

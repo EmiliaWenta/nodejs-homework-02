@@ -1,7 +1,5 @@
 import Jimp from "jimp";
-// import fs from "fs/promises";
-// import { storeImage } from "../config/multerConfing.js";
-// import path from "path";
+
 const AVATARS_WIDTH = 250;
 const AVATARS_HEIGHT = 250;
 
