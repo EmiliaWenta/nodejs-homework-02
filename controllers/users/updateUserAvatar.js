@@ -7,22 +7,10 @@ import { isImageAndTransform } from "../../helpers/isImageAndTransform.js";
 import { updateUserAvatarURL } from "../../service/index.js";
 
 export async function updateUserAvatar(req, res, next) {
-  if (!req.file) {
-    return res.status(400).json({ message: "File isn't a photo" });
-  }
-
   const { path: temporaryPath } = req.file;
   const extension = path.extname(temporaryPath);
   const fileName = `${uuidv4()}${extension}`;
   const filePath = path.join(storeImage, fileName);
-
-  try {
-    await fs.rename(temporaryPath, filePath);
-  } catch (e) {
-    console.log(e);
-    await fs.unlink(temporaryPath);
-    return next(e);
-  }
 
   const isValidAndTransform = await isImageAndTransform(filePath);
 
@@ -31,6 +19,14 @@ export async function updateUserAvatar(req, res, next) {
     return res
       .status(400)
       .json({ message: "File isn't a photo but is pretending " });
+  }
+
+  try {
+    await fs.rename(temporaryPath, filePath);
+  } catch (e) {
+    console.log(e);
+    await fs.unlink(temporaryPath);
+    return next(e);
   }
 
   const id = req.user._id;

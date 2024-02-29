@@ -20,13 +20,18 @@ const storage = multer.diskStorage({
 const uploadMiddleware = multer({
   storage,
   fileFilter: async (req, file, cb) => {
-    const extension = path.extname(file.originalname).toLocaleLowerCase();
+    const extension = path.extname(file.originalname).toLowerCase();
     const mimetype = file.mimetype;
     if (
       !extensionWhiteList.includes(extension) ||
       !mimetypeWhiteList.includes(mimetype)
     ) {
-      return cb(null, false);
+      return cb(
+        new Error(
+          "Sorry, but the file is not an image. Possible file extensions are: jpg, png, and gif. Please try again."
+        ),
+        false
+      );
     }
     return cb(null, true);
   },
