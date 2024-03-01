@@ -3,7 +3,7 @@ import Jimp from "jimp";
 const AVATARS_WIDTH = 250;
 const AVATARS_HEIGHT = 250;
 
-export const isImageAndTransform = async (filePath) => {
+export async function isImageAndTransform(filePath) {
   return new Promise((resolve) => {
     Jimp.read(filePath, async (err, image) => {
       if (err) resolve(false);
@@ -33,4 +33,4 @@ export const isImageAndTransform = async (filePath) => {
       }
     });
   });
-};
+}
