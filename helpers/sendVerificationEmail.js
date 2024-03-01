@@ -5,7 +5,7 @@ export function sendVerificationEmail(email, verificationToken) {
     from: "emiliakielinska96@gmail.com",
     to: email,
     subject: "Email verification link",
-    text: `Hello! Your email verification link: /users/verify/${verificationToken}`,
+    text: `Hello! Your email verification link: http://localhost:3000/api/users/verify/${verificationToken}`,
   };
 
   try {
