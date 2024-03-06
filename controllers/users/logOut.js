@@ -1,6 +1,6 @@
 import { User } from "../../service/schemas/users.js";
 
-async function logOut(req, res, next) {
+export async function logOut(req, res, next) {
   try {
     const { id } = req.user;
     await User.findByIdAndUpdate({ _id: id }, { token: null }, { new: true });
@@ -9,5 +9,3 @@ async function logOut(req, res, next) {
     next(e);
   }
 }
-
-export { logOut };

@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
 import bCrypt from "bcryptjs";
+import mongoose from "mongoose";
 
 const SchemaUsers = mongoose.Schema;
 
@@ -24,6 +24,14 @@ const users = new SchemaUsers({
   token: {
     type: String,
     default: null,
+  },
+  verify: {
+    type: Boolean,
+    default: false,
+  },
+  verificationToken: {
+    type: String,
+    required: [true, "Verify token is required"],
   },
 });
 

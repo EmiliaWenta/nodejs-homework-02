@@ -1,10 +1,10 @@
 import path from "path";
 import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
-import { storeImage } from "../../config/multerConfing.js";
 
-import { isImageAndTransform } from "../../helpers/isImageAndTransform.js";
+import { storeImage } from "../../config/multerConfing.js";
 import { updateUserAvatarURL } from "../../service/index.js";
+import { isImageAndTransform } from "../../helpers/isImageAndTransform.js";
 
 export async function updateUserAvatar(req, res, next) {
   const { path: temporaryPath } = req.file;

@@ -1,16 +1,11 @@
 import express from "express";
 
 import { showContacts } from "../../controllers/contacts/showContacts.js";
-
-import { showContactById } from "../../controllers/contacts/showContactById.js";
-
-import { createNewContact } from "../../controllers/contacts/createNewContact.js";
-
-import { deleteContact } from "../../controllers/contacts/deleteContact.js";
-
-import { updateExistContact } from "../../controllers/contacts/updateExistContact.js";
-
 import { updateStatus } from "../../controllers/contacts/updateStatus.js";
+import { deleteContact } from "../../controllers/contacts/deleteContact.js";
+import { showContactById } from "../../controllers/contacts/showContactById.js";
+import { createNewContact } from "../../controllers/contacts/createNewContact.js";
+import { updateExistContact } from "../../controllers/contacts/updateExistContact.js";
 
 const router = express.Router();
 

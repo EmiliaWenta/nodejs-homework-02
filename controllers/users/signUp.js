@@ -1,4 +1,4 @@
-import { validateAddUser } from "../../validator.js";
+import { validateAddUser } from "../../helpers/validator.js";
 import { findUserByEmail, createUser } from "../../service/index.js";
 
 export async function signUp(req, res, next) {

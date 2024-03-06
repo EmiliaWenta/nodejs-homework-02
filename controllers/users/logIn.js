@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import { validateAddUser } from "../../validator.js";
+
+import { validateAddUser } from "../../helpers/validator.js";
 import { findUserByEmail, updateUser } from "../../service/index.js";
 
 export async function logIn(req, res, next) {

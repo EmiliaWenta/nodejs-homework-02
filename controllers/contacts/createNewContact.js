@@ -1,4 +1,4 @@
-import { validateAddContact } from "../../validator.js";
+import { validateAddContact } from "../../helpers/validator.js";
 import { createContact, getContactByName } from "../../service/index.js";
 
 export async function createNewContact(req, res, next) {

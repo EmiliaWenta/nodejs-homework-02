@@ -1,5 +1,5 @@
 import { updateContact } from "../../service/index.js";
-import { validateUpdateContact } from "../../validator.js";
+import { validateUpdateContact } from "../../helpers/validator.js";
 
 export async function updateExistContact(req, res, next) {
   const owner = req.user.id;

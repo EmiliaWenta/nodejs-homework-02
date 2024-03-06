@@ -1,14 +1,12 @@
+import path from "path";
 import cors from "cors";
 import logger from "morgan";
 import express from "express";
-import path from "path";
 
-import { router as contactsRouter } from "./routes/api/contacts.js";
-
-import { router as usersRouter } from "./routes/api/users.js";
-
+import authMiddleware from "./helpers/auth.js";
 import setJWTStrategy from "./config/userAuthStrategy.js";
-import authMiddleware from "./auth.js";
+import { router as usersRouter } from "./routes/api/users.js";
+import { router as contactsRouter } from "./routes/api/contacts.js";
 
 const app = express();
 
